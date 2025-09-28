@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artisan Crafts - Handmade with Love</title>
+    <title>DJ Handmade Crafts - Unique Handcrafted Items</title>
+    <meta name="description" content="DJ Handmade Crafts - Unique handcrafted items including knitted scarves, pottery, woodwork, and custom pieces. Quality handmade goods with personal touch.">
+    <meta name="keywords" content="handmade crafts, knitting, pottery, woodwork, custom crafts, handcrafted items">
     <style>
         * {
             margin: 0;
@@ -246,8 +248,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>Artisan Crafts</h1>
-            <p class="tagline">Handmade with Love & Care</p>
+            <h1>DJ Handmade Crafts</h1>
+            <p class="tagline">Unique Handcrafted Items Made with Passion</p>
         </div>
     </header>
 
@@ -273,10 +275,10 @@
             
             <div class="crafts-grid">
                 <div class="craft-card">
-                    <img src="images/dog.jpg" alt="Hand-knitted Plush Dog" class="craft-image">
+                    <div class="craft-image">Hand-Knitted Scarf Photo</div>
                     <div class="craft-info">
-                        <h3>Hand-knitted Plush Dog</h3>
-                        <p>Hand-knitted with a traditional cable pattern.</p>
+                        <h3>Cozy Winter Scarf</h3>
+                        <p>Soft merino wool scarf in beautiful earth tones. Perfect for chilly evenings and winter walks. Hand-knitted with a traditional cable pattern.</p>
                         <div class="price">$45</div>
                     </div>
                 </div>
@@ -335,7 +337,8 @@
                 
                 <div id="message" class="message"></div>
                 
-                <form class="contact-form" id="contactForm">
+                <!-- REPLACE YOUR_FORM_ID WITH YOUR ACTUAL FORMSPREE FORM ID -->
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorebaq" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -362,9 +365,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Your Message *</label>
+                        <label for="messageText">Your Message *</label>
                         <textarea id="messageText" name="message" placeholder="Tell me about what you're looking for, any size preferences, color choices, or questions you have..." required></textarea>
                     </div>
+                    
+                    <!-- Hidden field for Formspree to redirect after submission -->
+                    <input type="hidden" name="_next" value="https://djhandmadecrafts.com?success=true">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - DJ Handmade Crafts">
                     
                     <div style="text-align: center;">
                         <button type="submit" class="btn" id="submitBtn">Send Message</button>
@@ -383,63 +390,37 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Artisan Crafts. Made with love and care.</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Follow me on social media for behind-the-scenes craft updates!</p>
+            <p>&copy; 2025 DJ Handmade Crafts. Made with love and care.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Visit us at djhandmadecrafts.com</p>
         </div>
     </footer>
 
     <script>
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             const submitBtn = document.getElementById('submitBtn');
-            const messageDiv = document.getElementById('message');
             
-            // Disable button and show loading state
+            // Show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
-            messageDiv.style.display = 'none';
             
-            // Collect form data
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                interest: formData.get('interest'),
-                message: formData.get('message')
-            };
-            
-            try {
-                const response = await fetch('/contact', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (response.ok) {
-                    messageDiv.className = 'message success';
-                    messageDiv.textContent = result.message || 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!';
-                    this.reset(); // Clear the form
-                } else {
-                    throw new Error(result.error || 'Failed to send message');
-                }
-            } catch (error) {
-                messageDiv.className = 'message error';
-                messageDiv.textContent = 'Sorry, there was an error sending your message. Please try again or email me directly.';
-            } finally {
-                // Reset button state
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-                messageDiv.style.display = 'block';
-                
-                // Scroll to message
-                messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            // Let the form submit naturally to Formspree
+            // Formspree will handle the redirect and email sending
         });
+
+        // Handle Formspree redirect with success message
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = 'message success';
+            messageDiv.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!';
+            messageDiv.style.display = 'block';
+            
+            // Reset the form
+            document.getElementById('contactForm').reset();
+            
+            // Clear the URL parameters
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
