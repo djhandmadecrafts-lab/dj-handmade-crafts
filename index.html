@@ -112,12 +112,9 @@
         .craft-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(45deg, #ddd, #eee);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-size: 1.1rem;
+            object-fit: cover;        /* Crops to fit without stretching */
+            object-position: center;  /* Centers the crop */
+            border-radius: 10px 10px 0 0;
         }
 
         .craft-info {
