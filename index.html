@@ -165,6 +165,66 @@
       color: #fff;
     }
 
+    /* Payment section (Cash App) */
+    .pay-section{
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      padding: 1.25rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .pay-section h3{
+      color: #8B4513;
+      margin-bottom: 0.5rem;
+    }
+
+    .pay-section p{
+      color: #444;
+    }
+
+    .cashapp-row{
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cashapp-qr{
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      border: 2px solid #eee;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .cashapp-btn{
+      display: inline-block;
+      background: #8B4513;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .cashapp-btn:hover{
+      background: #654321;
+      transform: translateY(-1px);
+    }
+
+    .cashapp-tag{
+      font-weight: bold;
+      color: #654321;
+      margin-top: 0.6rem;
+    }
+
     .contact-section {
       background: #f4f4f4;
       padding: 3rem 0;
@@ -263,6 +323,7 @@
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#crafts">My Crafts</a></li>
+        <li><a href="#payment">Payment</a></li>
         <li><a href="#contact">Contact Me</a></li>
         <li><a href="#about">About</a></li>
       </ul>
@@ -460,17 +521,16 @@
         </div>
 
         <div class="craft-card">
-          <img src="images/image5.jpg" alt="Hand-Crocheted Bunny" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <img src="images/image5.jpg" alt="Hand-Crocheted Bear" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
           <div class="craft-info">
-            <h3>Comforting White Bunny</h3>
+            <h3>Comforting White Bear</h3>
             <p>Crafted by hand using time-honored techniques and quality thread.</p>
             <div class="price">$10 Each + Shipping</div>
           </div>
         </div>
 
-        <!-- Birthday Bear -->
         <div class="craft-card">
-          <img src="images/birthday_bear.jpg" alt="Hand-Crocheted Birthday Bear with Cake" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <img src="images/image7.jpg" alt="Hand-Crocheted Birthday Bear with Cake" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
           <div class="craft-info">
             <h3>Happy Birthday Bear with Birthday Cake</h3>
             <p>Crafted by hand using time-honored techniques and quality thread.</p>
@@ -479,7 +539,6 @@
         </div>
       </div>
 
-      <!-- Pagination controls -->
       <div class="pagination" aria-label="Crafts pagination">
         <button type="button" class="page-btn" id="prevBtn">‹ Previous</button>
         <div class="page-numbers" id="pageNumbers" aria-label="Page numbers"></div>
@@ -487,10 +546,34 @@
       </div>
     </section>
 
+    <!-- Payment anchor (nav jumps here) -->
+    <section id="payment" style="margin-top: 1rem;"></section>
+
     <section id="contact" class="contact-section">
       <div class="container">
         <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Get in Touch</h2>
         <p style="text-align: center; margin-bottom: 2rem;">Interested in a custom piece or have questions? We'd love to hear from you!</p>
+
+        <!-- Cash App Payment Section -->
+        <div class="pay-section">
+          <h3>Pay with Cash App</h3>
+          <p>If you’re ready to pay (or place a deposit), you can use Cash App below.</p>
+
+          <div class="cashapp-row">
+            <a class="cashapp-btn" href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener">
+              Open Cash App Payment
+            </a>
+
+            <a href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener" aria-label="Open Cash App from QR">
+              <img src="images/cashapp-qr.png" alt="Cash App QR code for $JerryLDouglass" class="cashapp-qr">
+            </a>
+          </div>
+
+          <div class="cashapp-tag">$JerryLDouglass</div>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+            Tip: In the payment note, include the item name + your shipping name.
+          </p>
+        </div>
 
         <div id="message" class="message"></div>
 
@@ -599,14 +682,12 @@
 
       function renderPageNumbers() {
         pageNumbers.innerHTML = '';
-
         for (let p = 1; p <= totalPages; p++) {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'num-btn' + (p === currentPage ? ' active' : '');
           btn.textContent = p;
           btn.setAttribute('aria-label', `Go to page ${p}`);
-
           btn.addEventListener('click', () => renderPage(p));
           pageNumbers.appendChild(btn);
         }
@@ -626,7 +707,6 @@
         nextBtn.disabled = currentPage === totalPages;
 
         renderPageNumbers();
-
         craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
