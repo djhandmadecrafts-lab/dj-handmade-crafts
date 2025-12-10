@@ -168,7 +168,7 @@
     /* Payment section (Cash App) */
     .pay-section{
       max-width: 700px;
-      margin: 0 auto 2rem auto;
+      margin: 0 auto;
       padding: 1.25rem;
       background: #fff;
       border-radius: 12px;
@@ -226,6 +226,14 @@
     }
 
     .contact-section {
+      background: #f4f4f4;
+      padding: 3rem 0;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
+
+    /* NEW: dedicated Payment section styling (separate from Contact) */
+    .payment-section{
       background: #f4f4f4;
       padding: 3rem 0;
       border-radius: 10px;
@@ -546,34 +554,11 @@
       </div>
     </section>
 
-    <!-- Payment anchor (nav jumps here) -->
-    <section id="payment" style="margin-top: 1rem;"></section>
-
+    <!-- Contact section (no payment block inside anymore) -->
     <section id="contact" class="contact-section">
       <div class="container">
         <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Get in Touch</h2>
         <p style="text-align: center; margin-bottom: 2rem;">Interested in a custom piece or have questions? We'd love to hear from you!</p>
-
-        <!-- Cash App Payment Section -->
-        <div class="pay-section">
-          <h3>Pay with Cash App</h3>
-          <p>If you’re ready to pay (or place a deposit), you can use Cash App below.</p>
-
-          <div class="cashapp-row">
-            <a class="cashapp-btn" href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener">
-              Open Cash App Payment
-            </a>
-
-            <a href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener" aria-label="Open Cash App from QR">
-              <img src="images/cashapp-qr-JerryLDouglass.png" alt="Cash App QR code for $JerryLDouglass" class="cashapp-qr">
-            </a>
-          </div>
-
-          <div class="cashapp-tag">$JerryLDouglass</div>
-          <p style="margin-top: 0.75rem; font-size: 0.95rem;">
-            Tip: In the payment note, include the item name + your shipping name.
-          </p>
-        </div>
 
         <div id="message" class="message"></div>
 
@@ -613,6 +598,35 @@
             <button type="submit" class="btn" id="submitBtn">Send Message</button>
           </div>
         </form>
+      </div>
+    </section>
+
+    <!-- NEW: Separate Payment section BELOW Contact -->
+    <section id="payment" class="payment-section">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Payment</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">
+          If you’re ready to pay (or place a deposit), you can use Cash App below.
+        </p>
+
+        <div class="pay-section">
+          <h3>Pay with Cash App</h3>
+
+          <div class="cashapp-row">
+            <a class="cashapp-btn" href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener">
+              Open Cash App Payment
+            </a>
+
+            <a href="https://cash.app/$JerryLDouglass" target="_blank" rel="noopener" aria-label="Open Cash App from QR">
+              <img src="images/cashapp-qr-JerryLDouglass.png" alt="Cash App QR code for $JerryLDouglass" class="cashapp-qr">
+            </a>
+          </div>
+
+          <div class="cashapp-tag">$JerryLDouglass</div>
+          <p style="margin-top: 0.75rem; font-size: 0.95rem;">
+            Tip: In the payment note, include the item name + your shipping name.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -660,6 +674,7 @@
     });
 
     // --- Crafts pagination (6 per page) + clickable page numbers ---
+    // FIXED: no scroll on initial page load; only scroll when user clicks paging controls
     (function () {
       const ITEMS_PER_PAGE = 6;
 
@@ -688,12 +703,12 @@
           btn.className = 'num-btn' + (p === currentPage ? ' active' : '');
           btn.textContent = p;
           btn.setAttribute('aria-label', `Go to page ${p}`);
-          btn.addEventListener('click', () => renderPage(p));
+          btn.addEventListener('click', () => renderPage(p, true));
           pageNumbers.appendChild(btn);
         }
       }
 
-      function renderPage(page) {
+      function renderPage(page, doScroll) {
         currentPage = Math.min(Math.max(1, page), totalPages);
 
         const start = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -707,13 +722,17 @@
         nextBtn.disabled = currentPage === totalPages;
 
         renderPageNumbers();
-        craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (doScroll) {
+          craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
 
-      prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
-      nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
+      prevBtn.addEventListener('click', () => renderPage(currentPage - 1, true));
+      nextBtn.addEventListener('click', () => renderPage(currentPage + 1, true));
 
-      renderPage(1);
+      // Initial render: DO NOT SCROLL
+      renderPage(1, false);
     })();
   </script>
 </body>
