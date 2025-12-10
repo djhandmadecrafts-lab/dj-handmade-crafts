@@ -1,573 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D & J Handmade Crafts - Unique Handcrafted Items</title>
-    <meta name="description" content="D & J Handmade Crafts - Unique handcrafted items including hand-crocheted items, cross-stiched items, and other custom pieces. Quality handmade goods with personal touch.">
-    <meta name="keywords" content="handmade crafts, knitting, custom crafts, handcrafted items, hand-crocheted items, 3d printed items, christmas items">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D & J Handmade Crafts - Unique Handcrafted Items</title>
+  <meta name="description" content="D & J Handmade Crafts - Unique handcrafted items including hand-crocheted items, cross-stiched items, and other custom pieces. Quality handmade goods with personal touch." />
+  <meta name="keywords" content="handmade crafts, knitting, custom crafts, handcrafted items, hand-crocheted items, 3d printed items, christmas items" />
 
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #fefefe;
-        }
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #fefefe;
+    }
 
-        header {
-            background: linear-gradient(135deg, #8B4513, #D2691E);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
+    header {
+      background: linear-gradient(135deg, #8B4513, #D2691E);
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+    }
 
-        .tagline {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
 
-        nav {
-            background: #654321;
-            padding: 1rem 0;
-        }
+    .tagline { font-size: 1.2rem; opacity: 0.9; }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    nav { background: #654321; padding: 1rem 0; }
 
-        nav li {
-            margin: 0 20px;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
+    nav li { margin: 0 20px; }
 
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
-        }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
 
-        main {
-            padding: 3rem 0;
-        }
+    nav a:hover { background: rgba(255,255,255,0.2); }
 
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
+    main { padding: 3rem 0; }
 
-        .intro h2 {
-            color: #8B4513;
-            margin-bottom: 1rem;
-        }
+    .intro {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+    }
 
-        .crafts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
+    .intro h2 { color: #8B4513; margin-bottom: 1rem; }
 
-        .craft-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
+    .crafts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem; /* was 4rem; reduced to make pagination sit closer */
+    }
 
-        .craft-card:hover {
-            transform: translateY(-5px);
-        }
+    .craft-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
 
-        .craft-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;        /* Crops to fit without stretching */
-            object-position: center;  /* Centers the crop */
-            border-radius: 10px 10px 0 0;
-        }
+    .craft-card:hover { transform: translateY(-5px); }
 
-        .craft-info {
-            padding: 1.5rem;
-        }
+    .craft-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px 10px 0 0;
+    }
 
-        .craft-info h3 {
-            color: #8B4513;
-            margin-bottom: 0.5rem;
-        }
+    .craft-info { padding: 1.5rem; }
 
-        .price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #D2691E;
-            margin-top: 1rem;
-        }
+    .craft-info h3 { color: #8B4513; margin-bottom: 0.5rem; }
 
-        .contact-section {
-            background: #f4f4f4;
-            padding: 3rem 0;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #D2691E;
+      margin-top: 1rem;
+    }
 
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    /* Pagination UI */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 3rem 0;
+      flex-wrap: wrap;
+    }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+    .pagination .page-btn {
+      background: #8B4513;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
 
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #654321;
-        }
+    .pagination .page-btn:hover {
+      background: #654321;
+      transform: translateY(-1px);
+    }
 
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
+    .pagination .page-btn:disabled {
+      background: #c9c0b8;
+      cursor: not-allowed;
+      transform: none;
+    }
 
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #8B4513;
-        }
+    .pagination .page-indicator {
+      color: #654321;
+      font-weight: bold;
+      padding: 6px 10px;
+    }
 
-        textarea {
-            height: 120px;
-            resize: vertical;
-        }
+    .contact-section {
+      background: #f4f4f4;
+      padding: 3rem 0;
+      border-radius: 10px;
+      margin-top: 2rem;
+    }
 
-        .btn {
-            background: #8B4513;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
+    .contact-form { max-width: 600px; margin: 0 auto; }
 
-        .btn:hover {
-            background: #654321;
-        }
+    .form-group { margin-bottom: 1.5rem; }
 
-        .btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #654321;
+    }
 
-        .message {
-            padding: 1rem;
-            border-radius: 5px;
-            margin-bottom: 1rem;
-            display: none;
-        }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
 
-        .message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #8B4513;
+    }
 
-        .message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
+    textarea { height: 120px; resize: vertical; }
 
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
+    .btn {
+      background: #8B4513;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav li {
-                margin: 5px 0;
-            }
-            
-            .crafts-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .btn:hover { background: #654321; }
+
+    .btn:disabled { background: #ccc; cursor: not-allowed; }
+
+    .message {
+      padding: 1rem;
+      border-radius: 5px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .message.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .message.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      nav ul { flex-direction: column; align-items: center; }
+      nav li { margin: 5px 0; }
+      .crafts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container">
-            <h1>D & J Handmade Crafts</h1>
-            <p class="tagline">Unique Handcrafted Items Made with Passion</p>
+  <header>
+    <div class="container">
+      <h1>D & J Handmade Crafts</h1>
+      <p class="tagline">Unique Handcrafted Items Made with Passion</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#crafts">My Crafts</a></li>
+        <li><a href="#contact">Contact Me</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="home" class="intro">
+      <h2>Welcome to My Craft World</h2>
+      <p>Each piece is lovingly handcrafted using traditional techniques and premium materials. Every crocheted item tells a story of passion and dedication to the craft.</p>
+    </section>
+
+    <section id="crafts">
+      <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Featured Crafts</h2>
+
+      <div class="crafts-grid">
+        <div class="craft-card">
+          <img src="images/sitting_dog.jpg" alt="Cozy Hand-Crocheted Puppy" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Cozy Hand-Crocheted Puppy</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
         </div>
-    </header>
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#crafts">My Crafts</a></li>
-                <li><a href="#contact">Contact Me</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
+        <div class="craft-card">
+          <img src="images/blue_camo_turtles.jpg" alt="Adorable Pair of Turtles" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Adorable Pair of Turtles</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
         </div>
-    </nav>
 
-    <main class="container">
-        <section id="home" class="intro">
-            <h2>Welcome to My Craft World</h2>
-            <p>Each piece is lovingly handcrafted using traditional techniques and premium materials. Every crocheted item tells a story of passion and dedication to the craft.</p>
-        </section>
-
-        <section id="crafts">
-            <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Featured Crafts</h2>
-            
-            <div class="crafts-grid">
-                
-                <div class="craft-card">
-                            <img src="images/sitting_dog.jpg" alt="Cozy Hand-Crocheted Puppy" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Cozy Hand-Crocheted Puppy</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/blue_camo_turtles.jpg" alt="Adorable Pair of Turtles" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Adorable Pair of Turtles</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-                
-                <div class="craft-card">
-                            <img src="images/cat_with_heart.jpg" alt="Charming Hand-Crocheted Cat" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Charming Hand-Crocheted Cat</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-                
-                <div class="craft-card">
-                            <img src="images/standing_dog.jpg" alt="Snuggly Hand-Crocheted Standing Dog" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Snuggly Hand-Crocheted Standing Puppy</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-                
-                <div class="craft-card">
-                            <img src="images/red_blue_turtles.jpg" alt="Lovable Hand-Crocheted Pair of Turtles" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Lovable Hand-Crocheted Pair of Turtles</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/sitting_unicorn.jpg" alt="Darling Hand-Crocheted Sitting Unicorn" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Darling Hand-Crocheted Sitting Unicorn</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/standing_unicorn.jpg" alt="Sweet Hand-Crocheted Standing Unicorn" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Sweet Hand-Crocheted Standing Unicorn</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$20 Each + Shipping</div>
-                    </div>
-                </div>  
-                
-                <div class="craft-card">
-                            <img src="images/fox.jpg" alt="Warm Hand-Crocheted Fox" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Warm Hand-Crocheted Fox</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-                
-                <div class="craft-card">
-                            <img src="images/monkey.jpg" alt="Cuddlesome Hand-Crocheted Monkey" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Cuddlesome Hand-Crocheted Monkey</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/green_frog.jpg" alt="Cozy-soft Hand-Crocheted Frog" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Cozy-soft Hand-Crocheted Frog</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/blue_shark.jpg" alt="Tender Hand-Crocheted Whale" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Tender Hand-Crocheted Whale</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/red_snake.jpg" alt=" Delightful Hand-Crocheted Snake" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Delightful Hand-Crocheted Snake</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-
-                
-                <div class="craft-card">
-                            <img src="images/pink_doll.jpg" alt=" Precious Hand-Crocheted Doll" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Precious Hand-Crocheted Doll</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$15 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/dish_cloth.jpg" alt=" Hand-Crocheted 100% Cotton Dish Cloths" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Hand-Crocheted 100% Cotton Dish Cloths</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$5 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/hot_pads.jpg" alt=" Hand-Crocheted 100% Cotton Hot Pads" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Hand-Crocheted 100% Cotton Hot Pads</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image0.jpeg" alt=" Hand-Crocheted Yellow Giraffe" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Friendly Yellow Giraffe</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$20 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image6.jpg" alt=" Hand-Crocheted Multi-Colored Turtle" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Happy Multi-Colored Turtle</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image2.jpeg" alt=" Hand-Crocheted Bunny" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Cheerful Brown Bunny</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image3.jpeg" alt=" Hand-Crocheted Bunny" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Delightful Dark Brown Bunny</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image4.jpeg" alt=" Hand-Crocheted Bear" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Huggable Brown Bear</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$20 Each + Shipping</div>
-                    </div>
-                </div>
-
-                <div class="craft-card">
-                            <img src="images/image5.jpg" alt=" Hand-Crocheted Bear" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
-                    <div class="craft-info">
-                        <h3>Comforting White Bunny</h3>
-                        <p>Crafted by hand using time-honored techniques and quality thread.</p>
-                        <div class="price">$10 Each + Shipping</div>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <section id="contact" class="contact-section">
-            <div class="container">
-                <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Get in Touch</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Interested in a custom piece or have questions? We'd love to hear from you!</p>
-                
-                <div id="message" class="message"></div>
-                
-                <!-- REPLACE YOUR_FORM_ID WITH YOUR ACTUAL FORMSPREE FORM ID -->
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorebaq" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="interest">What interests you?</label>
-                        <select id="interest" name="interest">
-                            <option value="">Select a category...</option>
-                            <option value="crochet">Crocheted Items</option>
-                            <option value="leather">Crossed Stitched Items</option>
-                            <option value="christmas">Christmas Decorations</option>
-                            <option value="3d prints">3D Printed Items</option>
-                            <option value="custom">Custom Order</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="messageText">Your Message *</label>
-                        <textarea id="messageText" name="message" placeholder="Tell me about what you're looking for, any size preferences, color choices, or questions you have..." required></textarea>
-                    </div>
-                    
-                    <!-- Hidden field for Formspree to redirect after submission -->
-                    <input type="hidden" name="_next" value="https://djhandmadecrafts.com?success=true">
-                    <input type="hidden" name="_subject" value="New Contact Form Submission - DJ Handmade Crafts">
-                    
-                    <div style="text-align: center;">
-                        <button type="submit" class="btn" id="submitBtn">Send Message</button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        <section id="about" style="margin-top: 4rem; text-align: center;">
-            <h2 style="color: #8B4513; margin-bottom: 1rem;">About the Artisan</h2>
-            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
-                My crafting journey began over 50 years ago with a simple crochet hook and a ball of yarn. What started as basic projects has blossomed into a lifelong passion, and I still get excited tackling new creative challenges today. Each piece reflects my commitment to quality, sustainability, and traditional craftsmanship techniques passed down through generations. I work from my home studio and take pride in creating unique, functional art that brings joy to everyday life.
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 DJ Handmade Crafts. Made with love and care.</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Visit us at djhandmadecrafts.com</p>
+        <div class="craft-card">
+          <img src="images/cat_with_heart.jpg" alt="Charming Hand-Crocheted Cat" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Charming Hand-Crocheted Cat</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
         </div>
-    </footer>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const submitBtn = document.getElementById('submitBtn');
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Let the form submit naturally to Formspree
-            // Formspree will handle the redirect and email sending
+        <div class="craft-card">
+          <img src="images/standing_dog.jpg" alt="Snuggly Hand-Crocheted Standing Dog" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Snuggly Hand-Crocheted Standing Puppy</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/red_blue_turtles.jpg" alt="Lovable Hand-Crocheted Pair of Turtles" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Lovable Hand-Crocheted Pair of Turtles</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/sitting_unicorn.jpg" alt="Darling Hand-Crocheted Sitting Unicorn" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Darling Hand-Crocheted Sitting Unicorn</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/standing_unicorn.jpg" alt="Sweet Hand-Crocheted Standing Unicorn" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Sweet Hand-Crocheted Standing Unicorn</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$20 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/fox.jpg" alt="Warm Hand-Crocheted Fox" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Warm Hand-Crocheted Fox</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/monkey.jpg" alt="Cuddlesome Hand-Crocheted Monkey" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Cuddlesome Hand-Crocheted Monkey</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/green_frog.jpg" alt="Cozy-soft Hand-Crocheted Frog" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Cozy-soft Hand-Crocheted Frog</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/blue_shark.jpg" alt="Tender Hand-Crocheted Whale" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Tender Hand-Crocheted Whale</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/red_snake.jpg" alt="Delightful Hand-Crocheted Snake" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Delightful Hand-Crocheted Snake</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/pink_doll.jpg" alt="Precious Hand-Crocheted Doll" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Precious Hand-Crocheted Doll</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$15 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/dish_cloth.jpg" alt="Hand-Crocheted 100% Cotton Dish Cloths" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Hand-Crocheted 100% Cotton Dish Cloths</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$5 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/hot_pads.jpg" alt="Hand-Crocheted 100% Cotton Hot Pads" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Hand-Crocheted 100% Cotton Hot Pads</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image0.jpeg" alt="Hand-Crocheted Yellow Giraffe" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Friendly Yellow Giraffe</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$20 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image6.jpg" alt="Hand-Crocheted Multi-Colored Turtle" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Happy Multi-Colored Turtle</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$ Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image2.jpeg" alt="Hand-Crocheted Bunny" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Cheerful Brown Bunny</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image3.jpeg" alt="Hand-Crocheted Bunny" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Delightful Dark Brown Bunny</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image4.jpeg" alt="Hand-Crocheted Bear" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Huggable Brown Bear</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+
+        <div class="craft-card">
+          <img src="images/image5.jpg" alt="Hand-Crocheted Bear" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
+          <div class="craft-info">
+            <h3>Comforting White Bear</h3>
+            <p>Crafted by hand using time-honored techniques and quality thread.</p>
+            <div class="price">$10 Each + Shipping</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination controls (under the 6 items) -->
+      <div class="pagination" aria-label="Crafts pagination">
+        <button type="button" class="page-btn" id="prevBtn">‹ Previous</button>
+        <span class="page-indicator" id="pageIndicator">Page 1 of 1</span>
+        <button type="button" class="page-btn" id="nextBtn">Next ›</button>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Get in Touch</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Interested in a custom piece or have questions? We'd love to hear from you!</p>
+
+        <div id="message" class="message"></div>
+
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xeorebaq" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="interest">What interests you?</label>
+            <select id="interest" name="interest">
+              <option value="">Select a category...</option>
+              <option value="crochet">Crocheted Items</option>
+              <option value="leather">Crossed Stitched Items</option>
+              <option value="christmas">Christmas Decorations</option>
+              <option value="3d prints">3D Printed Items</option>
+              <option value="custom">Custom Order</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="messageText">Your Message *</label>
+            <textarea id="messageText" name="message" placeholder="Tell me about what you're looking for, any size preferences, color choices, or questions you have..." required></textarea>
+          </div>
+
+          <input type="hidden" name="_next" value="https://djhandmadecrafts.com?success=true" />
+          <input type="hidden" name="_subject" value="New Contact Form Submission - DJ Handmade Crafts" />
+
+          <div style="text-align: center;">
+            <button type="submit" class="btn" id="submitBtn">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="about" style="margin-top: 4rem; text-align: center;">
+      <h2 style="color: #8B4513; margin-bottom: 1rem;">About the Artisan</h2>
+      <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
+        My crafting journey began over 50 years ago with a simple crochet hook and a ball of yarn. What started as basic projects has blossomed into a lifelong passion, and I still get excited tackling new creative challenges today. Each piece reflects my commitment to quality, sustainability, and traditional craftsmanship techniques passed down through generations. I work from my home studio and take pride in creating unique, functional art that brings joy to everyday life.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 DJ Handmade Crafts. Made with love and care.</p>
+      <p style="margin-top: 10px; font-size: 0.9rem;">Visit us at djhandmadecrafts.com</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function () {
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+    });
+
+    // Handle Formspree redirect with success message
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      const messageDiv = document.getElementById('message');
+      messageDiv.className = 'message success';
+      messageDiv.textContent = "Thank you! Your message has been sent successfully. I'll get back to you soon!";
+      messageDiv.style.display = 'block';
+
+      document.getElementById('contactForm').reset();
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // --- Crafts pagination (6 per page) ---
+    (function () {
+      const ITEMS_PER_PAGE = 6;
+
+      const craftsSection = document.querySelector('#crafts');
+      if (!craftsSection) return;
+
+      const grid = craftsSection.querySelector('.crafts-grid');
+      if (!grid) return;
+
+      const cards = Array.from(grid.querySelectorAll('.craft-card'));
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const pageIndicator = document.getElementById('pageIndicator');
+
+      if (!prevBtn || !nextBtn || !pageIndicator) return;
+
+      let currentPage = 1;
+      const totalPages = Math.max(1, Math.ceil(cards.length / ITEMS_PER_PAGE));
+
+      function renderPage(page) {
+        currentPage = Math.min(Math.max(1, page), totalPages);
+
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+
+        cards.forEach((card, idx) => {
+          const show = idx >= start && idx < end;
+          card.style.display = show ? '' : 'none';
         });
 
-        // Handle Formspree redirect with success message
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            const messageDiv = document.getElementById('message');
-            messageDiv.className = 'message success';
-            messageDiv.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!';
-            messageDiv.style.display = 'block';
-            
-            // Reset the form
-            document.getElementById('contactForm').reset();
-            
-            // Clear the URL parameters
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
+        pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+        craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      prevBtn.addEventListener('click', () => renderPage(currentPage - 1));
+      nextBtn.addEventListener('click', () => renderPage(currentPage + 1));
+
+      renderPage(1);
+    })();
+  </script>
 </body>
 </html>
