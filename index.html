@@ -136,10 +136,33 @@
       transform: none;
     }
 
-    .pagination .page-indicator {
+    .page-numbers{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .page-numbers .num-btn{
+      background: transparent;
+      border: 2px solid #8B4513;
       color: #654321;
+      border-radius: 999px;
+      padding: 8px 12px;
       font-weight: bold;
-      padding: 6px 10px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, color 0.2s;
+    }
+
+    .page-numbers .num-btn:hover{
+      background: rgba(139, 69, 19, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .page-numbers .num-btn.active{
+      background: #8B4513;
+      color: #fff;
     }
 
     .contact-section {
@@ -445,7 +468,7 @@
           </div>
         </div>
 
-        <!-- ✅ NEW ITEM ADDED (Birthday Bear) -->
+        <!-- Birthday Bear -->
         <div class="craft-card">
           <img src="images/image7.jpg" alt="Hand-Crocheted Birthday Bear with Cake" class="craft-image" style="width: 400px; height: 600px; object-fit: cover;">
           <div class="craft-info">
@@ -456,10 +479,10 @@
         </div>
       </div>
 
-      <!-- Pagination controls (under the 6 items) -->
+      <!-- Pagination controls -->
       <div class="pagination" aria-label="Crafts pagination">
         <button type="button" class="page-btn" id="prevBtn">‹ Previous</button>
-        <span class="page-indicator" id="pageIndicator">Page 1 of 1</span>
+        <div class="page-numbers" id="pageNumbers" aria-label="Page numbers"></div>
         <button type="button" class="page-btn" id="nextBtn">Next ›</button>
       </div>
     </section>
@@ -553,7 +576,7 @@
       });
     });
 
-    // --- Crafts pagination (6 per page) ---
+    // --- Crafts pagination (6 per page) + clickable page numbers ---
     (function () {
       const ITEMS_PER_PAGE = 6;
 
@@ -564,14 +587,30 @@
       if (!grid) return;
 
       const cards = Array.from(grid.querySelectorAll('.craft-card'));
+
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
-      const pageIndicator = document.getElementById('pageIndicator');
+      const pageNumbers = document.getElementById('pageNumbers');
 
-      if (!prevBtn || !nextBtn || !pageIndicator) return;
+      if (!prevBtn || !nextBtn || !pageNumbers) return;
 
       let currentPage = 1;
       const totalPages = Math.max(1, Math.ceil(cards.length / ITEMS_PER_PAGE));
+
+      function renderPageNumbers() {
+        pageNumbers.innerHTML = '';
+
+        for (let p = 1; p <= totalPages; p++) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'num-btn' + (p === currentPage ? ' active' : '');
+          btn.textContent = p;
+          btn.setAttribute('aria-label', `Go to page ${p}`);
+
+          btn.addEventListener('click', () => renderPage(p));
+          pageNumbers.appendChild(btn);
+        }
+      }
 
       function renderPage(page) {
         currentPage = Math.min(Math.max(1, page), totalPages);
@@ -580,13 +619,13 @@
         const end = start + ITEMS_PER_PAGE;
 
         cards.forEach((card, idx) => {
-          const show = idx >= start && idx < end;
-          card.style.display = show ? '' : 'none';
+          card.style.display = (idx >= start && idx < end) ? '' : 'none';
         });
 
-        pageIndicator.textContent = `Page ${currentPage} of ${totalPages}`;
         prevBtn.disabled = currentPage === 1;
         nextBtn.disabled = currentPage === totalPages;
+
+        renderPageNumbers();
 
         craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
