@@ -85,12 +85,12 @@
 
     .craft-card:hover { transform: translateY(-5px); }
 
-    /* UPDATED: Height increased to 350px and object-fit set to contain */
+    /* --- FIX: UPDATED CSS FOR IMAGES --- */
     .craft-image {
       width: 100%;
-      height: 350px;
-      object-fit: contain;
-      background-color: #fff; /* Keeps the background clean */
+      height: 350px;           /* Increased height slightly for better visibility */
+      object-fit: contain;     /* This ensures the whole image is seen (no cropping) */
+      background-color: #fff;  /* White background for the empty space */
       object-position: center;
       border-radius: 10px 10px 0 0;
     }
@@ -234,6 +234,7 @@
       margin-top: 2rem;
     }
 
+    /* NEW: dedicated Payment section styling (separate from Contact) */
     .payment-section{
       background: #f4f4f4;
       padding: 3rem 0;
@@ -827,4 +828,38 @@
           btn.type = 'button';
           btn.className = 'num-btn' + (p === currentPage ? ' active' : '');
           btn.textContent = p;
-          btn.setAttribute('aria-label', `Go to
+          btn.setAttribute('aria-label', `Go to page ${p}`);
+          btn.addEventListener('click', () => renderPage(p, true));
+          pageNumbers.appendChild(btn);
+        }
+      }
+
+      function renderPage(page, doScroll) {
+        currentPage = Math.min(Math.max(1, page), totalPages);
+
+        const start = (currentPage - 1) * ITEMS_PER_PAGE;
+        const end = start + ITEMS_PER_PAGE;
+
+        cards.forEach((card, idx) => {
+          card.style.display = (idx >= start && idx < end) ? '' : 'none';
+        });
+
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+
+        renderPageNumbers();
+
+        if (doScroll) {
+          craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      prevBtn.addEventListener('click', () => renderPage(currentPage - 1, true));
+      nextBtn.addEventListener('click', () => renderPage(currentPage + 1, true));
+
+      // Initial render: DO NOT SCROLL
+      renderPage(1, false);
+    })();
+  </script>
+</body>
+</html>
