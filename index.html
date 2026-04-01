@@ -17,7 +17,11 @@
       background-color: #fefefe;
     }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
     header {
       background: linear-gradient(135deg, #8B4513, #D2691E);
@@ -32,18 +36,38 @@
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
 
-    .tagline { font-size: 1.2rem; opacity: 0.9; }
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
 
-    nav { background: #654321; padding: 1rem 0; }
+    nav {
+      background: #654321;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
     nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 6px;
     }
 
-    nav li { margin: 0 20px; }
+    nav li {
+      margin: 0 8px;
+    }
 
     nav a {
       color: white;
@@ -52,11 +76,55 @@
       padding: 10px 15px;
       border-radius: 5px;
       transition: background 0.3s;
+      display: inline-block;
     }
 
-    nav a:hover { background: rgba(255,255,255,0.2); }
+    nav a:hover {
+      background: rgba(255,255,255,0.2);
+    }
 
-    main { padding: 3rem 0; }
+    .nav-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-search input {
+      width: 240px;
+      max-width: 100%;
+      padding: 10px 12px;
+      border: 2px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      background: #fff;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .nav-search input:focus {
+      outline: none;
+      border-color: #D2691E;
+    }
+
+    .nav-search button {
+      background: #8B4513;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .nav-search button:hover {
+      background: #D2691E;
+      transform: translateY(-1px);
+    }
+
+    main {
+      padding: 3rem 0;
+    }
 
     .intro {
       text-align: center;
@@ -66,7 +134,24 @@
       border-radius: 10px;
     }
 
-    .intro h2 { color: #8B4513; margin-bottom: 1rem; }
+    .intro h2 {
+      color: #8B4513;
+      margin-bottom: 1rem;
+    }
+
+    .crafts-heading {
+      text-align: center;
+      margin-bottom: 1rem;
+      color: #8B4513;
+    }
+
+    .search-status {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #654321;
+      font-weight: bold;
+      min-height: 1.5em;
+    }
 
     .crafts-grid {
       display: grid;
@@ -83,21 +168,32 @@
       transition: transform 0.3s;
     }
 
-    .craft-card:hover { transform: translateY(-5px); }
+    .craft-card:hover {
+      transform: translateY(-5px);
+    }
 
-    /* --- FIX: UPDATED CSS FOR IMAGES --- */
+    .craft-card.hidden-by-search,
+    .craft-card.hidden-by-page {
+      display: none !important;
+    }
+
     .craft-image {
       width: 100%;
-      height: 350px;           /* Increased height slightly for better visibility */
-      object-fit: contain;     /* This ensures the whole image is seen (no cropping) */
-      background-color: #fff;  /* White background for the empty space */
+      height: 350px;
+      object-fit: contain;
+      background-color: #fff;
       object-position: center;
       border-radius: 10px 10px 0 0;
     }
 
-    .craft-info { padding: 1.5rem; }
+    .craft-info {
+      padding: 1.5rem;
+    }
 
-    .craft-info h3 { color: #8B4513; margin-bottom: 0.5rem; }
+    .craft-info h3 {
+      color: #8B4513;
+      margin-bottom: 0.5rem;
+    }
 
     .price {
       font-size: 1.2rem;
@@ -106,7 +202,6 @@
       margin-top: 1rem;
     }
 
-    /* Pagination UI */
     .pagination {
       display: flex;
       justify-content: center;
@@ -138,7 +233,7 @@
       transform: none;
     }
 
-    .page-numbers{
+    .page-numbers {
       display: flex;
       gap: 8px;
       align-items: center;
@@ -146,7 +241,7 @@
       flex-wrap: wrap;
     }
 
-    .page-numbers .num-btn{
+    .page-numbers .num-btn {
       background: transparent;
       border: 2px solid #8B4513;
       color: #654321;
@@ -157,18 +252,28 @@
       transition: background 0.2s, transform 0.1s, color 0.2s;
     }
 
-    .page-numbers .num-btn:hover{
+    .page-numbers .num-btn:hover {
       background: rgba(139, 69, 19, 0.08);
       transform: translateY(-1px);
     }
 
-    .page-numbers .num-btn.active{
+    .page-numbers .num-btn.active {
       background: #8B4513;
       color: #fff;
     }
 
-    /* Payment section (Cash App) */
-    .pay-section{
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      color: #654321;
+      font-weight: bold;
+    }
+
+    .pay-section {
       max-width: 700px;
       margin: 0 auto;
       padding: 1.25rem;
@@ -178,16 +283,16 @@
       text-align: center;
     }
 
-    .pay-section h3{
+    .pay-section h3 {
       color: #8B4513;
       margin-bottom: 0.5rem;
     }
 
-    .pay-section p{
+    .pay-section p {
       color: #444;
     }
 
-    .cashapp-row{
+    .cashapp-row {
       display: flex;
       gap: 18px;
       align-items: center;
@@ -196,7 +301,7 @@
       flex-wrap: wrap;
     }
 
-    .cashapp-qr{
+    .cashapp-qr {
       width: 180px;
       height: 180px;
       border-radius: 12px;
@@ -205,7 +310,7 @@
       background: #fff;
     }
 
-    .cashapp-btn{
+    .cashapp-btn {
       display: inline-block;
       background: #8B4513;
       color: #fff;
@@ -216,12 +321,12 @@
       transition: background 0.2s, transform 0.1s;
     }
 
-    .cashapp-btn:hover{
+    .cashapp-btn:hover {
       background: #654321;
       transform: translateY(-1px);
     }
 
-    .cashapp-tag{
+    .cashapp-tag {
       font-weight: bold;
       color: #654321;
       margin-top: 0.6rem;
@@ -234,17 +339,21 @@
       margin-top: 2rem;
     }
 
-    /* NEW: dedicated Payment section styling (separate from Contact) */
-    .payment-section{
+    .payment-section {
       background: #f4f4f4;
       padding: 3rem 0;
       border-radius: 10px;
       margin-top: 2rem;
     }
 
-    .contact-form { max-width: 600px; margin: 0 auto; }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-    .form-group { margin-bottom: 1.5rem; }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
 
     label {
       display: block;
@@ -253,7 +362,9 @@
       color: #654321;
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
       padding: 12px;
       border: 2px solid #ddd;
@@ -262,12 +373,17 @@
       transition: border-color 0.3s;
     }
 
-    input:focus, textarea:focus, select:focus {
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
       border-color: #8B4513;
     }
 
-    textarea { height: 120px; resize: vertical; }
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
 
     .btn {
       background: #8B4513;
@@ -280,9 +396,14 @@
       transition: background 0.3s;
     }
 
-    .btn:hover { background: #654321; }
+    .btn:hover {
+      background: #654321;
+    }
 
-    .btn:disabled { background: #ccc; cursor: not-allowed; }
+    .btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
 
     .message {
       padding: 1rem;
@@ -311,11 +432,36 @@
       margin-top: 3rem;
     }
 
+    @media (max-width: 900px) {
+      .nav-inner {
+        justify-content: center;
+      }
+    }
+
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
-      nav ul { flex-direction: column; align-items: center; }
-      nav li { margin: 5px 0; }
-      .crafts-grid { grid-template-columns: 1fr; }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav li {
+        margin: 5px 0;
+      }
+
+      .nav-search {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .nav-search input {
+        width: min(100%, 300px);
+      }
+
+      .crafts-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -329,7 +475,7 @@
   </header>
 
   <nav>
-    <div class="container">
+    <div class="container nav-inner">
       <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#crafts">My Crafts</a></li>
@@ -337,6 +483,16 @@
         <li><a href="#contact">Contact Me</a></li>
         <li><a href="#about">About</a></li>
       </ul>
+
+      <div class="nav-search">
+        <input
+          type="text"
+          id="craftSearch"
+          placeholder="Search crafts..."
+          aria-label="Search crafts"
+        />
+        <button type="button" id="clearSearch">Clear</button>
+      </div>
     </div>
   </nav>
 
@@ -347,9 +503,11 @@
     </section>
 
     <section id="crafts">
-      <h2 style="text-align: center; margin-bottom: 2rem; color: #8B4513;">Featured Crafts</h2>
+      <h2 class="crafts-heading">Featured Crafts</h2>
+      <div id="searchStatus" class="search-status"></div>
+      <div id="noResults" class="no-results">No crafts matched your search.</div>
 
-      <div class="crafts-grid">
+      <div class="crafts-grid" id="craftsGrid">
         <div class="craft-card">
           <img src="images/sitting_dog.jpg" alt="Cozy Hand-Crocheted Puppy" class="craft-image">
           <div class="craft-info">
@@ -610,7 +768,7 @@
             <div class="price">$15 Each + Shipping</div>
           </div>
         </div>
-        
+
         <div class="craft-card">
           <img src="images/pink_pig.jpeg" alt="Hand-Crocheted Pink Pig" class="craft-image">
           <div class="craft-info">
@@ -619,7 +777,7 @@
             <div class="price">$15 Each + Shipping</div>
           </div>
         </div>
-        
+
         <div class="craft-card">
           <img src="images/lady_bugs.jpeg" alt="Hand-Crocheted Lady Bugs" class="craft-image">
           <div class="craft-info">
@@ -635,7 +793,7 @@
             <h3>Loveable Bunnies</h3>
             <p>Crafted by hand using time-honored techniques and quality thread.</p>
             <div class="price">$10 Each + Shipping</div>
-           </div>
+          </div>
         </div>
 
         <div class="craft-card">
@@ -673,7 +831,7 @@
             <div class="price">$35 + Shipping</div>
           </div>
         </div>
-        
+
         <div class="craft-card">
           <img src="images/lion_blanket.jpeg" alt="Hand-Crocheted Blanket" class="craft-image">
           <div class="craft-info">
@@ -700,7 +858,7 @@
             <div class="price">$20 + Shipping</div>
           </div>
         </div>
-        
+
         <div class="craft-card">
           <img src="images/corgi.jpeg" alt="Corgi Dog" class="craft-image">
           <div class="craft-info">
@@ -709,7 +867,6 @@
             <div class="price">$15 + Shipping</div>
           </div>
         </div>
-
 
         <div class="craft-card">
           <img src="images/green_dragon.jpeg" alt="Green Dragon" class="craft-image">
@@ -783,7 +940,6 @@
           </div>
         </div>
 
-
         <div class="craft-card">
           <img src="images/onesie_10.jpeg" alt="Babe Onsie" class="craft-image">
           <div class="craft-info">
@@ -792,8 +948,6 @@
             <div class="price">$10 + Shipping</div>
           </div>
         </div>
-        
-
 
         <div class="craft-card">
           <img src="images/fish_10.jpeg" alt="Fish" class="craft-image">
@@ -804,8 +958,6 @@
           </div>
         </div>
 
-
-
         <div class="craft-card">
           <img src="images/box_flower_20.jpeg" alt="Flowers" class="craft-image">
           <div class="craft-info">
@@ -814,7 +966,6 @@
             <div class="price">$20 + Shipping</div>
           </div>
         </div>
-
 
         <div class="craft-card">
           <img src="images/box_flowers_20.jpeg" alt="Flowers" class="craft-image">
@@ -842,12 +993,9 @@
             <div class="price">$10 + Shipping</div>
           </div>
         </div>
-
-
-        
       </div>
-      
-      <div class="pagination" aria-label="Crafts pagination">
+
+      <div class="pagination" aria-label="Crafts pagination" id="pagination">
         <button type="button" class="page-btn" id="prevBtn">‹ Previous</button>
         <div class="page-numbers" id="pageNumbers" aria-label="Page numbers"></div>
         <button type="button" class="page-btn" id="nextBtn">Next ›</button>
@@ -943,13 +1091,117 @@
   </footer>
 
   <script>
+    const allCraftCards = Array.from(document.querySelectorAll('.craft-card'));
+    const craftsGrid = document.getElementById('craftsGrid');
+    const searchInput = document.getElementById('craftSearch');
+    const clearSearchBtn = document.getElementById('clearSearch');
+    const searchStatus = document.getElementById('searchStatus');
+    const noResults = document.getElementById('noResults');
+    const pagination = document.getElementById('pagination');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const pageNumbers = document.getElementById('pageNumbers');
+
+    const itemsPerPage = 9;
+    let currentPage = 1;
+    let filteredCards = [...allCraftCards];
+
+    function getCardSearchText(card) {
+      return card.innerText.toLowerCase();
+    }
+
+    function applySearch() {
+      const query = searchInput.value.trim().toLowerCase();
+
+      filteredCards = allCraftCards.filter(card => {
+        const matches = getCardSearchText(card).includes(query);
+        card.classList.toggle('hidden-by-search', !matches);
+        return matches;
+      });
+
+      currentPage = 1;
+      renderCrafts();
+
+      if (query) {
+        searchStatus.textContent = `${filteredCards.length} item(s) found for "${searchInput.value.trim()}"`;
+      } else {
+        searchStatus.textContent = '';
+      }
+
+      noResults.style.display = filteredCards.length === 0 ? 'block' : 'none';
+      pagination.style.display = filteredCards.length === 0 ? 'none' : 'flex';
+    }
+
+    function renderCrafts() {
+      allCraftCards.forEach(card => card.classList.add('hidden-by-page'));
+
+      const totalPages = Math.max(1, Math.ceil(filteredCards.length / itemsPerPage));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const visibleCards = filteredCards.slice(start, end);
+
+      visibleCards.forEach(card => {
+        if (!card.classList.contains('hidden-by-search')) {
+          card.classList.remove('hidden-by-page');
+        }
+      });
+
+      renderPageButtons(totalPages);
+
+      prevBtn.disabled = currentPage === 1;
+      nextBtn.disabled = currentPage === totalPages || filteredCards.length === 0;
+    }
+
+    function renderPageButtons(totalPages) {
+      pageNumbers.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'num-btn' + (i === currentPage ? ' active' : '');
+        btn.textContent = i;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderCrafts();
+          document.getElementById('crafts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        pageNumbers.appendChild(btn);
+      }
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderCrafts();
+        document.getElementById('crafts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const totalPages = Math.max(1, Math.ceil(filteredCards.length / itemsPerPage));
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderCrafts();
+        document.getElementById('crafts').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    searchInput.addEventListener('input', applySearch);
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      applySearch();
+      searchInput.focus();
+    });
+
     document.getElementById('contactForm').addEventListener('submit', function () {
       const submitBtn = document.getElementById('submitBtn');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
     });
 
-    // Handle Formspree redirect with success message
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('success') === 'true') {
       const messageDiv = document.getElementById('message');
@@ -961,76 +1213,7 @@
       window.history.replaceState({}, document.title, window.location.pathname);
     }
 
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    // --- Crafts pagination (6 per page) + clickable page numbers ---
-    // FIXED: no scroll on initial page load; only scroll when user clicks paging controls
-    (function () {
-      const ITEMS_PER_PAGE = 6;
-
-      const craftsSection = document.querySelector('#crafts');
-      if (!craftsSection) return;
-
-      const grid = craftsSection.querySelector('.crafts-grid');
-      if (!grid) return;
-
-      const cards = Array.from(grid.querySelectorAll('.craft-card'));
-
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      const pageNumbers = document.getElementById('pageNumbers');
-
-      if (!prevBtn || !nextBtn || !pageNumbers) return;
-
-      let currentPage = 1;
-      const totalPages = Math.max(1, Math.ceil(cards.length / ITEMS_PER_PAGE));
-
-      function renderPageNumbers() {
-        pageNumbers.innerHTML = '';
-        for (let p = 1; p <= totalPages; p++) {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'num-btn' + (p === currentPage ? ' active' : '');
-          btn.textContent = p;
-          btn.setAttribute('aria-label', `Go to page ${p}`);
-          btn.addEventListener('click', () => renderPage(p, true));
-          pageNumbers.appendChild(btn);
-        }
-      }
-
-      function renderPage(page, doScroll) {
-        currentPage = Math.min(Math.max(1, page), totalPages);
-
-        const start = (currentPage - 1) * ITEMS_PER_PAGE;
-        const end = start + ITEMS_PER_PAGE;
-
-        cards.forEach((card, idx) => {
-          card.style.display = (idx >= start && idx < end) ? '' : 'none';
-        });
-
-        prevBtn.disabled = currentPage === 1;
-        nextBtn.disabled = currentPage === totalPages;
-
-        renderPageNumbers();
-
-        if (doScroll) {
-          craftsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
-      prevBtn.addEventListener('click', () => renderPage(currentPage - 1, true));
-      nextBtn.addEventListener('click', () => renderPage(currentPage + 1, true));
-
-      // Initial render: DO NOT SCROLL
-      renderPage(1, false);
-    })();
+    applySearch();
   </script>
 </body>
 </html>
